@@ -3,9 +3,9 @@ class Auth{
 
     private $objValidator;
     private $objDb;
-    private $passVal;
-    private $passDb;
-    private $errors;
+    private $errors = array();
+    private $user;
+    private $passwodr;
 
     public function __construct(array $data){
         if ($this->init($data)){
@@ -25,23 +25,33 @@ class Auth{
        return $this->objValidator->chekLogin();
     }
 
+    private function getClearPassword(){
+        return $this->objValidator->chekPassword();
+    }
+
     public function getUser(){
         $user = $this->objDb->getRow($this->getClearLogin());
         var_dump($user);
     }
 
-    private function getPassVal(){
-        $passVal = $this->objValidator->getArrayData();
+    private function comparePassword(){
+        var_dump($this->getClearPassword());
+        //var_dump($this->$user[password]);
+        if($this->getClearPassword() === $this->$user[password]){
+            return true;
+        }
+        return false;
     }
 
-    private function getPassDb(){
-        $passDb = $this->objDb->getInfoUser();
+    public function getError(){
+        if($this->getClearLogin() and $this->comparePassword()){
+            $this->errors;
+        }
+
+        $this->errors[avtoriz] = "A login or password is incorrect";
+        return $this->errors;
     }
 
-    //if($this->objValidator->chekPassword()){
-     //   if($this->passVal[password] === $this->passDb[password]){
-      //      header("Location: http://php.net");
-      //  }
     }
 
 

@@ -25,7 +25,12 @@ class Validator {
     }
 
     public function chekPassword(){
-        return preg_match(PATTERNPASS, $this->arrayData[pass]);
+        var_dump($this->arrayData[pass]);
+        if(preg_match(PATTERNPASS, $this->arrayData[pass])){
+            return $this->arrayData[pass];
+        }
+
+        return false;
     }
 }
 
