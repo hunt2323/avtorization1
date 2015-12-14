@@ -20,7 +20,7 @@
         <input type="submit" valie="Acsept">
     </form>
 
-    <?php var_dump($_POST[ 'login']); var_dump($_POST[ 'pass']); ?>
+    <?php //var_dump($_POST[ 'login']); var_dump($_POST[ 'pass']); ?>
 
 </body>
 

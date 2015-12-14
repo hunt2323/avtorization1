@@ -6,12 +6,14 @@ function __autoload($class) {
 
 $objAuth = new Auth($_POST);
 
-//$b = $objAuth->Vardump();
-
 $objAuth->getUser();
 
-$error = $objAuth->getError();
 
+$error = $objAuth->getError();
+//var_dump($objAuth->comparePassword());
+/*if(($objAuth->comparePassword()) === true){
+    header('Location: http://google.ru/');
+}*/
 include 'Templates\template.php';
 
 

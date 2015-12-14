@@ -23,7 +23,7 @@ class Auth{
 
     private function getClearLogin(){
        return $this->objValidator->chekLogin();
-    }
+
 
     private function getClearPassword(){
         return $this->objValidator->chekPassword();
@@ -31,15 +31,28 @@ class Auth{
 
     public function getUser(){
         $user = $this->objDb->getRow($this->getClearLogin());
-        var_dump($user);
-    }
-
-    private function comparePassword(){
-        var_dump($this->getClearPassword());
-        //var_dump($this->$user[password]);
-        if($this->getClearPassword() === $this->$user[password]){
-            return true;
+        //$this->user = $this->objDb->getInfoUser();
+        foreach($user as $row){
+        var_dump('<pre>row : ');
+        var_dump($row['login']);
         }
+
+        var_dump('user : ');
+        var_dump($user);
+        var_dump('</pre>');
+       }
+
+    /*public function getInfoUser(){
+        return $this->objDb->getInfoUser();
+        //var_dump($this->getInfoUser());
+    }*/
+
+    public function comparePassword(){
+        //var_dump($this->getClearPassword());
+        var_dump($this->user[password]);
+            if($this->getClearPassword() === $this->user['password']){
+            return true;
+            }
         return false;
     }
 
@@ -52,7 +65,7 @@ class Auth{
         return $this->errors;
     }
 
-    }
+}
 
 
 ?>

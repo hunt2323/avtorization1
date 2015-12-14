@@ -1,7 +1,7 @@
 <?php
 class Db{
 
-    private $infoUser;
+    //private $infoUser;
 
         public function __construct(){
             mysql_connect(HOST, USER, PASS) or die('No coonection to mysql');
@@ -9,15 +9,18 @@ class Db{
         }
 
     public function getRow($key1){
+        //var_dump($key1);
         $result = mysql_query('SELECT login, password, role FROM avtorizacia WHERE login = "'.$key1.'"');
+        //var_dump($result);
         while($row = mysql_fetch_assoc($result)){
             $infoUser[] = $row;
+            //var_dump($this->infoUser);
         }
         return $infoUser;
     }
 
-    public function getInfoUser(){
-        return $this->infoUser();
-    }
+    /*public function getInfoUser(){
+        return $this->infoUser;
+    }*/
 }
 ?>
