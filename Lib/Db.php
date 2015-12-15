@@ -9,13 +9,10 @@ class Db{
         }
 
     public function getRow($key1){
-        //var_dump($key1);
-        $result = mysql_query('SELECT login, password, role FROM avtorizacia WHERE login = "'.$key1.'"');
-        //var_dump($result);
-        while($row = mysql_fetch_assoc($result)){
-            $infoUser[] = $row;
-            //var_dump($this->infoUser);
-        }
+            $result = mysql_query('SELECT login, password, role FROM avtorizacia WHERE login = "'.$key1.'"');
+            while($row = mysql_fetch_assoc($result)){
+                $infoUser = $row;
+            }
         return $infoUser;
     }
 

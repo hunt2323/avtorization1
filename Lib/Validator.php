@@ -1,7 +1,6 @@
 <?php
 class Validator {
 
-    //protected $result;
     private $arrayData = array();
 
     public function __construct($data){
@@ -25,8 +24,7 @@ class Validator {
     }
 
     public function chekPassword(){
-        //var_dump($this->arrayData[pass]);
-        if(preg_match(PATTERNPASS, $this->arrayData[pass])){
+            if(preg_match(PATTERNPASS, $this->arrayData[pass])){
             return $this->arrayData[pass];
         }
 

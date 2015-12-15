@@ -5,7 +5,7 @@ class Auth{
     private $objDb;
     private $errors = array();
     private $user;
-    private $passwodr;
+        //private $passwodr;
 
     public function __construct(array $data){
         if ($this->init($data)){
@@ -23,35 +23,22 @@ class Auth{
 
     private function getClearLogin(){
        return $this->objValidator->chekLogin();
-
+    }
 
     private function getClearPassword(){
         return $this->objValidator->chekPassword();
     }
 
     public function getUser(){
-        $user = $this->objDb->getRow($this->getClearLogin());
-        //$this->user = $this->objDb->getInfoUser();
-        foreach($user as $row){
-        var_dump('<pre>row : ');
-        var_dump($row['login']);
+        $this->user = $this->objDb->getRow($this->getClearLogin());
+        return $this->user;
+
         }
 
-        var_dump('user : ');
-        var_dump($user);
-        var_dump('</pre>');
-       }
 
-    /*public function getInfoUser(){
-        return $this->objDb->getInfoUser();
-        //var_dump($this->getInfoUser());
-    }*/
-
-    public function comparePassword(){
-        //var_dump($this->getClearPassword());
-        var_dump($this->user[password]);
+   public function comparePassword(){
             if($this->getClearPassword() === $this->user['password']){
-            return true;
+            header("Location: http://www.ukr.net/");
             }
         return false;
     }
