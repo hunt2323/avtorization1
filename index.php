@@ -10,10 +10,7 @@ $objAuth->getUser();
 
 
 $error = $objAuth->getError();
-//var_dump($objAuth->comparePassword());
-/*if(($objAuth->comparePassword()) === true){
-    header('Location: http://google.ru/');
-}*/
+var_dump($error);
 include 'Templates\template.php';
 
 

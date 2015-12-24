@@ -29,6 +29,14 @@ class Auth{
         return $this->objValidator->chekPassword();
     }
 
+    private function getPatternLog(){
+        return $this->objValidator->chekLogin();
+    }
+
+    private function getPatternPass(){
+        return $this->objValidator->chekPassword();
+    }
+
     public function getUser(){
         $this->user = $this->objDb->getRow($this->getClearLogin());
         return $this->user;
@@ -45,10 +53,24 @@ class Auth{
 
     public function getError(){
         if($this->getClearLogin() and $this->comparePassword()){
-            $this->errors;
+            continue;
         }
-
+        else {
         $this->errors[avtoriz] = "A login or password is incorrect";
+        }
+        if($this->getPatternLog()){
+            var_dump($this->getPatternLog());
+            continue;
+        }
+        else{
+            $this->errors[patternlog] = "Login vveden ne korrektno";
+        }
+        if($this->getPatternPass()){
+            continue;
+        }
+        else{
+            $this->errors[patternpass] = "Password vveden ne korrektno";
+        }
         return $this->errors;
     }
 
