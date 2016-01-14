@@ -21,47 +21,39 @@ class Auth{
         return true;
     }
 
-    private function getClearLogin(){
-       return $this->objValidator->chekLogin();
-    }
-
-    private function getClearPassword(){
-        return $this->objValidator->chekPassword();
-    }
-
-    private function getPatternLog(){
+   private function getPatternLog(){
         return $this->objValidator->chekLogin();
-    }
+       }
 
     private function getPatternPass(){
         return $this->objValidator->chekPassword();
     }
 
     public function getUser(){
-        $this->user = $this->objDb->getRow($this->getClearLogin());
+        $this->user = $this->objDb->getRow($this->getPatternLog());
         return $this->user;
 
         }
 
 
    public function comparePassword(){
-            if($this->getClearPassword() === $this->user['password']){
+            if($this->getPatternPass() === $this->user['password']){
             header("Location: http://www.ukr.net/");
             }
         return false;
     }
 
     public function getError(){
-        if($this->getClearLogin() and $this->comparePassword()){
+        if($this->getPatternLog() and $this->comparePassword()){
             continue;
         }
         else {
-        $this->errors[avtoriz] = "A login or password is incorrect";
+            $this->errors[avtoriz] = "A login or password is incorrect";
         }
         if($this->getPatternLog()){
             var_dump($this->getPatternLog());
-            continue;
-        }
+            //continue;
+            }
         else{
             $this->errors[patternlog] = "Login vveden ne korrektno";
         }
@@ -72,7 +64,7 @@ class Auth{
             $this->errors[patternpass] = "Password vveden ne korrektno";
         }
         return $this->errors;
-    }
+        }
 
 }
 

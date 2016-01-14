@@ -18,7 +18,8 @@ class Validator {
     public function chekLogin(){
         if(preg_match(PATTERNLOG, $this->arrayData[login])){
             return $this->arrayData[login];
-        }
+            }
+
 
         return false;
     }
