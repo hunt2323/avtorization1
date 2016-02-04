@@ -1,0 +1,9 @@
+body {
+    background: #FFFFF0;
+}
+
+.error {
+    font: 20px Verdana, Geneva, sans-serif;
+    color: #FF0000;
+    text-align: center;
+}
