@@ -16,8 +16,11 @@ class Db{
         return $infoUser;
     }
 
-    /*public function getInfoUser(){
-        return $this->infoUser;
-    }*/
+    public function writeInfo($log, $pass) {
+        $result = mysql_query("INSERT INTO avtorizacia(login, password) VALUES('$log', '$pass')");
+        var_dump($result);
+    return $result;
+    }
+
 }
 ?>

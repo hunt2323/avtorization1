@@ -31,6 +31,15 @@ class Validator {
 
         return false;
     }
+
+    public function chekConfirmPassword(){
+            if(preg_match(PATTERNPASS, $this->arrayData[confirmpass])){
+            return $this->arrayData[confirmpass];
+        }
+
+        return false;
+    }
+
 }
 
 ?>
