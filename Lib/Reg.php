@@ -1,67 +1,74 @@
-<?
-class Reg{
+<?php
+class Reg
+{
     private $objValidator;
     private $objDb;
-    //private $errors = array();
+    private $errors = array();
     private $user;
 
-
-    public function __construct(array $data){
-        if ($this->init($data)){
+    public function __construct(array $data)
+    {
+        if ($this->init($data))
+        {
             $this->objValidator = new Validator($data);
             $this->objDb = new Db();
-            }
+        }
     }
 
-    private function init($value){
-        if(!isset($value)){
+    private function init($value)
+    {
+        if(!isset($value))
+        {
             return false;
         }
         return true;
     }
 
-    private function getPatternLog(){
+    private function getPatternLog()
+    {
         return $this->objValidator->chekLogin();
     }
 
-    private function getPatternPass(){
+    private function getPatternPass()
+    {
         return $this->objValidator->chekPassword();
     }
 
-    private function getPatternConfirmPass(){
+    private function getPatternConfirmPass()
+    {
         return $this->objValidator->chekConfirmPassword();
-
     }
 
-    public function getUser(){
+    public function getUser()
+    {
         $this->user = $this->objDb->getRow($this->getPatternLog());
-        var_dump($this->user);
         return $this->user;
-        }
+    }
 
-        public function comparePassword(){
-            //var_dump($this->getPatternLog());
-            //var_dump($this->getPatternPass());
-            if(!($this->user) && ($this->getPatternLog() && $this->getPatternPass()) && $this->getPatternPass() === $this->getPatternConfirmPass()){
-                $this->objDb->writeInfo($this->getPatternLog(), $this->getPatternPass());
-              }
+    public function comparePassword()
+    {
+        if(!($this->user) && ($this->getPatternLog() && $this->getPatternPass()) && $this->getPatternPass() === $this->getPatternConfirmPass())
+        {
+            $this->objDb->writeInfo($this->getPatternLog(), $this->getPatternPass());
+        }
             return false;
-        }
+    }
 
-    public function getError(){
-
-        if(!$this->getPatternLog()){
+    public function getError()
+    {
+        if(!$this->getPatternLog())
+        {
             $this->errors[patternlog] = "Login vveden ne korrektno";
         }
-        if(!$this->getPatternPass()){
+        if(!$this->getPatternPass())
+        {
             $this->errors[patternpass] = "Password vveden ne korrektno";
         }
-        if(!($this->getPatternPass() === $this->getPatternConfirmPass())){
+        if(!($this->getPatternPass() === $this->getPatternConfirmPass()))
+        {
             $this->errors[patternconfirmpass] = "Oshibka pri povtornom vvedenii passworda";
         }
         return $this->errors;
-        }
-
+    }
 }
-
 ?>

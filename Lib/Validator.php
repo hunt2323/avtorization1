@@ -1,45 +1,49 @@
 <?php
-class Validator {
-
+class Validator
+{
     private $arrayData = array();
 
-    public function __construct($data){
-        if(is_array($data)){
-            foreach($data as $key=>$val){
+    public function __construct($data)
+    {
+        if(is_array($data))
+        {
+            foreach($data as $key=>$val)
+            {
                 $this->arrayData[$key] = trim($val);
             }
         }
     }
 
-    public function getArrayData(){
+    public function getArrayData()
+    {
         return $this->arrayData;
     }
 
-    public function chekLogin(){
-        if(preg_match(PATTERNLOG, $this->arrayData[login])){
+    public function chekLogin()
+    {
+        if(preg_match(PATTERNLOG, $this->arrayData[login]))
+        {
             return $this->arrayData[login];
-            }
-
-
+        }
         return false;
     }
 
-    public function chekPassword(){
-            if(preg_match(PATTERNPASS, $this->arrayData[pass])){
+    public function chekPassword()
+    {
+        if(preg_match(PATTERNPASS, $this->arrayData[pass]))
+        {
             return $this->arrayData[pass];
         }
-
         return false;
     }
 
-    public function chekConfirmPassword(){
-            if(preg_match(PATTERNPASS, $this->arrayData[confirmpass])){
+    public function chekConfirmPassword()
+    {
+        if(preg_match(PATTERNPASS, $this->arrayData[confirmpass]))
+        {
             return $this->arrayData[confirmpass];
         }
-
         return false;
     }
-
 }
-
 ?>
